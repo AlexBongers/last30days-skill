@@ -1,5 +1,37 @@
 # /last30days v2.9.5
 
+## Deploy to Render (Web App)
+
+Run last30days as a web service on [Render.com's free tier](https://render.com) — no CLI required.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/AlexBongers/last30days-skill)
+
+### Quick start
+
+1. **Fork this repo** to your own GitHub account (button in the top-right on GitHub).
+2. **Create a Render account** at [render.com](https://render.com) and connect your GitHub.
+3. **New → Blueprint** — point it at your fork. Render auto-detects `render.yaml` and creates the service.
+4. **Set environment variables** in the Render dashboard under your service → *Environment*:
+
+   | Variable | Required | Description |
+   |---|---|---|
+   | `SCRAPECREATORS_API_KEY` | **Yes** | Covers Reddit, TikTok, Instagram ([get one](https://scrapecreators.com)) |
+   | `OPENAI_API_KEY` | Optional | For synthesis / report writing |
+   | `XAI_API_KEY` | Optional | xAI Grok for X/Twitter search |
+   | `OPENROUTER_API_KEY` | Optional | OpenRouter model fallback |
+   | `PARALLEL_API_KEY` | Optional | Parallel AI model |
+   | `BRAVE_API_KEY` | Optional | Brave web search |
+   | `APIFY_API_TOKEN` | Optional | Apify scrapers |
+   | `AUTH_TOKEN` / `CT0` | Optional | Your X/Twitter session tokens |
+   | `BSKY_HANDLE` / `BSKY_APP_PASSWORD` | Optional | Bluesky account |
+   | `TRUTHSOCIAL_TOKEN` | Optional | Truth Social bearer token |
+
+5. **Deploy** — Render builds and starts the service. Visit your service URL to start researching.
+
+> **Note:** Render free tier services spin down after 15 minutes of inactivity and spin back up on the next request (cold start ~30 s). Research requests already take 1–3 minutes, so this is usually fine.
+
+---
+
 ### Claude Code (recommended)
 ```
 /plugin marketplace add mvanhorn/last30days-skill
